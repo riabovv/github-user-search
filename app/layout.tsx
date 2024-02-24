@@ -1,3 +1,4 @@
+import { ReactNode } from "react";
 import type { Metadata } from "next";
 import { Open_Sans } from "next/font/google";
 import "./globals.css";
@@ -10,14 +11,14 @@ export const metadata: Metadata = {
     "Discover GitHub users effortlessly with GitFinder – the ultimate GitHub user search app. Explore profiles, repositories, and stay connected with the open-source community. Simple, fast, and secure. Optimize your GitHub experience today!",
 };
 
-export default function RootLayout({
+const RootLayout = ({
   children,
 }: Readonly<{
-  children: React.ReactNode;
-}>) {
-  return (
-    <html lang="en">
-      <body className={openSans.className}>{children}</body>
-    </html>
-  );
-}
+  children: ReactNode;
+}>) => (
+  <html lang="en">
+    <body className={openSans.className}>{children}</body>
+  </html>
+);
+
+export default RootLayout;

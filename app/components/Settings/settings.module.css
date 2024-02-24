@@ -1,0 +1,17 @@
+.wrapper {
+  display: flex;
+}
+
+.icon {
+  --size: 30px;
+  width: var(--size);
+  height: var(--size);
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .icon:hover {
+    color: var(--primary-color);
+  }
+}

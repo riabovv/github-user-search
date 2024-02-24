@@ -1,0 +1,23 @@
+.wrapper {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  transition: 0.3s ease;
+  color: var(--primary-color);
+}
+
+.icon {
+  --size: 40px;
+  width: var(--size);
+  height: var(--size);
+}
+
+.title {
+  font-size: 25px;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .wrapper:hover {
+    color: var(--light);
+  }
+}

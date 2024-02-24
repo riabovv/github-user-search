@@ -1,8 +1,9 @@
+import Header from "./components/layout/Header/Header";
 import Main from "./components/layout/Main/Main";
 
 const Home = () => (
   <>
-    <header></header>
+    <Header />
     <Main />
     <footer></footer>
   </>
