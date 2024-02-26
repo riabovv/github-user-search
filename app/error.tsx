@@ -1,6 +1,6 @@
 "use client";
 
-import { FunctionComponent, useEffect } from "react";
+import { FunctionComponent } from "react";
 import Button from "./components/common/Button/Button";
 import "./styles/error.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -12,10 +12,6 @@ type ErrorProps = {
 };
 
 const Error: FunctionComponent<ErrorProps> = ({ error, reset }) => {
-  useEffect(() => {
-    console.log("e", error);
-  }, [error]);
-
   return (
     <div className="error-warn">
       <div className="wrapper">
