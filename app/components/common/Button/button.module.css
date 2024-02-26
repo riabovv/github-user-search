@@ -1,0 +1,13 @@
+.defaultButton {
+  background-color: var(--primary-color);
+  color: var(--dark);
+  font-size: 18px;
+  padding: 8px 15px;
+  border-radius: 4px;
+  border: 1px solid transparent;
+  font-weight: 500;
+}
+
+.defaultButton:focus {
+  border: 1px solid var(--light-dark);
+}

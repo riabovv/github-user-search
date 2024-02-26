@@ -1,11 +1,15 @@
-// import styles from "./main.module.css";
-
-import MainInput from "../../common/MainInput/MainInput";
+import MainForm from "./MainForm/MainForm";
+import styles from "./main.module.css";
 
 const Main = () => {
   return (
-    <main>
-      <MainInput type="text" placeholder="Example: riabovv" />
+    <main className={styles.wrapper}>
+      <div className={styles.searchWrapper}>
+        <span className={styles.title}>
+          Search for any GitHub user you want to find
+        </span>
+        <MainForm />
+      </div>
     </main>
   );
 };
