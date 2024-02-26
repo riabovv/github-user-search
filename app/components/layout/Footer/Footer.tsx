@@ -2,7 +2,7 @@ import styles from "./footer.module.css";
 
 const Footer = () => (
   <footer className={styles.wrapper}>
-    <i>
+    <i className={styles.title}>
       Developed by{" "}
       <a
         href="https://github.com/riabovv"
