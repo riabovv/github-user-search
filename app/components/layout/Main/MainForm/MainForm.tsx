@@ -8,8 +8,6 @@ import { FormEvent } from "react";
 const MainForm = () => {
   const handleFormSubmit = (e: FormEvent) => {
     e.preventDefault();
-
-    console.log("submitted");
   };
 
   return (

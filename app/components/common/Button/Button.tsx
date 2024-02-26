@@ -6,10 +6,19 @@ import styles from "./button.module.css";
 type ButtonProps = {
   type: "submit" | "reset" | "button";
   children: ReactNode;
+  onClick?: () => void;
 };
 
-const Button: FunctionComponent<ButtonProps> = ({ type, children }) => (
-  <button type={type} className={styles.defaultButton}>
+const Button: FunctionComponent<ButtonProps> = ({
+  type,
+  children,
+  onClick,
+}) => (
+  <button
+    type={type}
+    className={styles.defaultButton}
+    onClick={onClick ? onClick : undefined}
+  >
     {children}
   </button>
 );
