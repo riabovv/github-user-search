@@ -84,6 +84,13 @@ pre {
 
 a {
   background-color: transparent;
+  color: var(--primary-color);
+  text-decoration: none;
+  transition: 0.3s ease-out;
+}
+
+a:hover {
+  color: var(--secondary-color);
 }
 
 /**
