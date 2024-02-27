@@ -6,11 +6,10 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faXmark } from "@fortawesome/free-solid-svg-icons";
 
 type SnackBarProps = {
-  type: "success" | "error" | "info";
   onClose: () => void;
 };
 
-const SnackBar: FunctionComponent<SnackBarProps> = ({ type, onClose }) => {
+const SnackBar: FunctionComponent<SnackBarProps> = ({ onClose }) => {
   return (
     <div className={[styles.wrapper, styles.snackbarInfo].join(" ")}>
       <div className={styles.contentWrapper}>

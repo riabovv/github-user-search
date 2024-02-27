@@ -22,9 +22,7 @@ const MainForm = () => {
         <Button type="submit">Search</Button>
       </div>
 
-      {isSnackbarOpen && (
-        <SnackBar type="info" onClose={() => setIsSnackbarOpen(false)} />
-      )}
+      {isSnackbarOpen && <SnackBar onClose={() => setIsSnackbarOpen(false)} />}
     </form>
   );
 };
