@@ -1,13 +1,18 @@
 "use client";
 
+import { FormEvent, useState } from "react";
 import MainInput from "@/app/components/common/MainInput/MainInput";
 import styles from "./mainForm.module.css";
 import Button from "@/app/components/common/Button/Button";
-import { FormEvent } from "react";
+import SnackBar from "@/app/components/common/Snackbar/Snackbar";
 
 const MainForm = () => {
+  const [isSnackbarOpen, setIsSnackbarOpen] = useState(false);
+
   const handleFormSubmit = (e: FormEvent) => {
     e.preventDefault();
+
+    setIsSnackbarOpen(true);
   };
 
   return (
@@ -16,6 +21,10 @@ const MainForm = () => {
         <MainInput type="text" placeholder="Example: riabovv" />
         <Button type="submit">Search</Button>
       </div>
+
+      {isSnackbarOpen && (
+        <SnackBar type="info" onClose={() => setIsSnackbarOpen(false)} />
+      )}
     </form>
   );
 };
