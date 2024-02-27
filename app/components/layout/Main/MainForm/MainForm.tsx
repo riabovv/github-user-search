@@ -5,14 +5,15 @@ import MainInput from "@/app/components/common/MainInput/MainInput";
 import styles from "./mainForm.module.css";
 import Button from "@/app/components/common/Button/Button";
 import SnackBar from "@/app/components/common/Snackbar/Snackbar";
+import searchUsers from "@/app/utils/searchUsers";
 
 const MainForm = () => {
   const [isSnackbarOpen, setIsSnackbarOpen] = useState(false);
 
-  const handleFormSubmit = (e: FormEvent) => {
+  const handleFormSubmit = async (e: FormEvent) => {
     e.preventDefault();
-
     setIsSnackbarOpen(true);
+    searchUsers("Sam");
   };
 
   return (
