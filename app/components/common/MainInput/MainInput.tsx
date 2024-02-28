@@ -1,6 +1,6 @@
 "use client";
 
-import { ChangeEvent, FunctionComponent, useState } from "react";
+import { ChangeEvent, FunctionComponent, useEffect, useState } from "react";
 import styles from "./mainInput.module.css";
 
 type MainInputProps = {
@@ -17,6 +17,10 @@ const MainInput: FunctionComponent<MainInputProps> = ({
   const handleInputChange = ({
     target: { value },
   }: ChangeEvent<HTMLInputElement>) => setInputValue(value);
+
+  useEffect(() => {
+    sessionStorage.setItem("search-value", inputValue);
+  }, [inputValue]);
 
   return (
     <input

@@ -1,18 +1,23 @@
 "use client";
 
 import { FormEvent, useState } from "react";
+import { useRouter } from "next/navigation";
 import MainInput from "@/app/components/common/MainInput/MainInput";
 import styles from "./mainForm.module.css";
 import Button from "@/app/components/common/Button/Button";
 import SnackBar from "@/app/components/common/Snackbar/Snackbar";
-import { redirect } from "next/navigation";
 
 const MainForm = () => {
+  const router = useRouter();
   const [isSnackbarOpen, setIsSnackbarOpen] = useState(false);
 
   const handleFormSubmit = async (e: FormEvent) => {
     e.preventDefault();
-    // redirect("/search?q=Hello");
+    const inputValue = sessionStorage.getItem("search-value");
+
+    if (inputValue) {
+      router.push(`/search?q='${inputValue}`);
+    }
   };
 
   return (

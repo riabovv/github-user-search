@@ -21,20 +21,25 @@ const Search = () => {
     }
 
     const findUsers = async () => {
-      const findedUsers = await searchUsers("Sam");
-      let usersToSave: UserCard[] = [];
+      const inputValue = sessionStorage.getItem("search-value");
 
-      if (findedUsers) {
-        findedUsers.forEach((user) => {
-          usersToSave.push({
-            nickname: user.login,
-            avatarUrl: user.avatar_url,
-            url: user.html_url,
+      if (inputValue) {
+        const findedUsers = await searchUsers(inputValue);
+
+        let usersToSave: UserCard[] = [];
+
+        if (findedUsers) {
+          findedUsers.forEach((user) => {
+            usersToSave.push({
+              nickname: user.login,
+              avatarUrl: user.avatar_url,
+              url: user.html_url,
+            });
           });
-        });
-      }
+        }
 
-      setUserCards(usersToSave);
+        setUserCards(usersToSave);
+      }
     };
 
     findUsers();
