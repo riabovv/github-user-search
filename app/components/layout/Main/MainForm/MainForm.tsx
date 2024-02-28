@@ -2,8 +2,8 @@
 
 import { FormEvent, useState } from "react";
 import { useRouter } from "next/navigation";
-import MainInput from "@/app/components/common/MainInput/MainInput";
 import styles from "./mainForm.module.css";
+import MainInput from "@/app/components/common/MainInput/MainInput";
 import Button from "@/app/components/common/Button/Button";
 import SnackBar from "@/app/components/common/Snackbar/Snackbar";
 
@@ -15,8 +15,10 @@ const MainForm = () => {
     e.preventDefault();
     const inputValue = sessionStorage.getItem("search-value");
 
-    if (inputValue) {
+    if (inputValue && inputValue.length > 0) {
       router.push(`/search?q='${inputValue}`);
+    } else {
+      setIsSnackbarOpen(true);
     }
   };
 
@@ -27,7 +29,13 @@ const MainForm = () => {
         <Button type="submit">Search</Button>
       </div>
 
-      {isSnackbarOpen && <SnackBar onClose={() => setIsSnackbarOpen(false)} />}
+      {isSnackbarOpen && (
+        <SnackBar
+          type="error"
+          contentText="Search field is empty"
+          onClose={() => setIsSnackbarOpen(false)}
+        />
+      )}
     </form>
   );
 };

@@ -1,5 +1,3 @@
-"use client";
-
 import { ChangeEvent, FunctionComponent, useEffect, useState } from "react";
 import styles from "./mainInput.module.css";
 

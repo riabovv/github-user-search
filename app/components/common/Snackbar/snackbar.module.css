@@ -9,12 +9,9 @@
   border-radius: 10px;
   text-align: center;
   transform: translateY(var(--translateYPos));
+  background-color: #196489;
   animation: 1s appearing ease-out;
   padding: 10px 15px;
-}
-
-.snackbarInfo {
-  background-color: #196489;
 }
 
 .contentWrapper {
