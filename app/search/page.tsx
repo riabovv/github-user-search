@@ -1,22 +1,27 @@
-// "use client";
+"use client";
 
-// import { useSearchParams } from "next/navigation";
+import { useLayoutEffect } from "react";
+import { redirect, useSearchParams } from "next/navigation";
+import Header from "../components/layout/Header/Header";
+import LoadingSkeleton from "../components/LoadingSkeleton/LoadingSkeleton";
 
-// const Search = () => {
-//   const searchParams = useSearchParams();
-//   const hasQueryParam = !!searchParams.get("q");
+const Search = () => {
+  const searchParams = useSearchParams();
+  const hasQueryParam = !!searchParams.get("q");
 
-//   console.log(hasQueryParam);
+  useLayoutEffect(() => {
+    if (!hasQueryParam) {
+      redirect("/");
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
-//   return (
-//     <>
-//       <span>Search</span>
-//     </>
-//   );
-// };
-
-// export default Search;
-
-const Search = () => <span>Search</span>;
+  return (
+    <>
+      <Header shouldLogoRedirect />
+      <LoadingSkeleton />
+    </>
+  );
+};
 
 export default Search;
