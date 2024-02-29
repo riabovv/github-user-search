@@ -12,6 +12,7 @@ import styles from "./page.module.css";
 const Search = () => {
   const searchParams = useSearchParams();
   const hasQueryParam = !!searchParams.get("q");
+  const queryParam = searchParams.get("q") ?? "";
   const [amountOfUsersFound, setAmountOfUsersFound] = useState(0);
 
   const [userCards, setUserCards] = useState<UserCard[]>([]);
@@ -24,8 +25,8 @@ const Search = () => {
     const findUsers = async () => {
       const inputValue = sessionStorage.getItem("search-value");
 
-      if (inputValue) {
-        const foundUsers = await searchUsers(inputValue);
+      if (inputValue || queryParam) {
+        const foundUsers = await searchUsers(inputValue || queryParam);
 
         let usersToSave: UserCard[] = [];
 
