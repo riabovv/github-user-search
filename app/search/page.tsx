@@ -12,6 +12,7 @@ import styles from "./page.module.css";
 const Search = () => {
   const searchParams = useSearchParams();
   const hasQueryParam = !!searchParams.get("q");
+  const [amountOfUsersFound, setAmountOfUsersFound] = useState(0);
 
   const [userCards, setUserCards] = useState<UserCard[]>([]);
 
@@ -24,18 +25,20 @@ const Search = () => {
       const inputValue = sessionStorage.getItem("search-value");
 
       if (inputValue) {
-        const findedUsers = await searchUsers(inputValue);
+        const foundUsers = await searchUsers(inputValue);
 
         let usersToSave: UserCard[] = [];
 
-        if (findedUsers) {
-          findedUsers.forEach((user) => {
+        if (foundUsers) {
+          foundUsers.items.forEach((user) => {
             usersToSave.push({
               nickname: user.login,
               avatarUrl: user.avatar_url,
               url: user.html_url,
             });
           });
+
+          setAmountOfUsersFound(foundUsers.totalAmount);
         }
 
         setUserCards(usersToSave);
@@ -50,6 +53,23 @@ const Search = () => {
   return (
     <>
       <Header shouldLogoRedirect />
+      <div className={styles.foundUsersWrapper}>
+        {amountOfUsersFound !== 0 && (
+          <span className={styles.foundUsersTitle}>
+            {amountOfUsersFound > 1 ? (
+              <>
+                <span className={styles.amount}>{amountOfUsersFound}</span>{" "}
+                users were found
+              </>
+            ) : (
+              <>
+                <span className={styles.amount}>{amountOfUsersFound}</span> user
+                was found
+              </>
+            )}
+          </span>
+        )}
+      </div>
       {userCards.length > 0 && (
         <div className={styles.wrapper}>
           {userCards.map((userCard) => {

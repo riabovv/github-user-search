@@ -10,7 +10,11 @@ const searchUsers = async (searchParam: string) => {
         "X-GitHub-Api-Version": "2022-11-28",
       },
     });
-    result = res.data.items;
+
+    result = {
+      items: res.data.items,
+      totalAmount: res.data.total_count,
+    };
   } catch (err) {
     console.log(err);
   }
