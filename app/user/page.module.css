@@ -1,0 +1,63 @@
+.wrapper {
+  width: 1440px;
+  margin: 0 auto;
+  display: flex;
+  gap: 50px;
+}
+
+.avatarImage {
+  border-radius: 10px;
+  box-shadow: rgba(0, 0, 0, 0.2) 0px 7px 29px 0px;
+}
+
+.name {
+  margin: 20px 0 0 0;
+  font-size: 30px;
+  font-weight: 700;
+  text-align: center;
+  color: var(--primary-color);
+}
+
+.bio {
+  margin: 10px 0 0 0;
+  font-size: 20px;
+}
+
+.email {
+  margin: 15px 0 5px 0;
+}
+
+.location {
+  margin: 0 0 5px 0;
+}
+
+.email,
+.email a,
+.blog a,
+.location {
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  color: var(--light-dark);
+}
+
+.bioIcon {
+  --size: 14px;
+
+  width: var(--size);
+  height: var(--size);
+}
+
+.ghProfileLink {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.externalLinkIcon {
+  --size: 15px;
+
+  width: var(--size);
+  height: var(--size);
+}
