@@ -1,5 +1,5 @@
 .wrapper {
-  width: 1440px;
+  max-width: 1440px;
   margin: 0 auto;
   display: flex;
   gap: 50px;
@@ -19,20 +19,14 @@
 }
 
 .bio {
-  margin: 10px 0 0 0;
+  margin: 10px 0 15px 0;
   font-size: 20px;
-}
-
-.email {
-  margin: 15px 0 5px 0;
 }
 
 .location {
   margin: 0 0 5px 0;
 }
 
-.email,
-.email a,
 .blog a,
 .location {
   font-size: 14px;
@@ -49,6 +43,14 @@
   height: var(--size);
 }
 
+.githubInfo {
+  width: 100%;
+}
+
+.githubProfile {
+  margin: 0 0 20px 0;
+}
+
 .ghProfileLink {
   display: flex;
   align-items: center;
@@ -60,4 +62,116 @@
 
   width: var(--size);
   height: var(--size);
+}
+
+.githubActivity {
+  display: flex;
+  gap: 30px;
+  margin: 0 0 30px 0;
+}
+
+.githubActivityTitle {
+  display: inline-block;
+  margin: 0 0 10px 0;
+}
+
+.followers,
+.following,
+.repos {
+  width: 120px;
+  height: 60px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #144c68;
+  border-radius: 10px;
+  box-shadow: rgba(0, 0, 0, 0.2) 0px 4px 10px 0px;
+  font-size: 25px;
+}
+
+.repositoriesTitleWrapper {
+  margin: 0 0 10px 0;
+}
+
+.repositoryCardWrapper {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.repositoryCard {
+  width: 400px;
+  background-color: #144c68;
+  padding: 16px;
+  border-radius: 5px;
+}
+
+.repositoryCardTitle {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0 0 25px 0;
+}
+
+.repositoryCardDevLang,
+.dateOfUpdate {
+  font-size: 12px;
+}
+
+@media screen and (max-width: 992px) {
+  .repositoryCard {
+    width: 100%;
+  }
+
+  .followers,
+  .following,
+  .repos {
+    width: 110px;
+    height: 55px;
+  }
+
+  .githubActivity {
+    gap: 20px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .wrapper {
+    flex-direction: column;
+    gap: 25px;
+  }
+
+  .avatar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .bio {
+    margin: 10px 0 15px 0;
+  }
+}
+
+@media screen and (max-width: 576px) {
+  .avatar img {
+    width: 100%;
+    height: unset;
+  }
+
+  .githubActivity {
+    justify-content: center;
+  }
+}
+
+@media screen and (max-width: 405px) {
+  .githubActivity {
+    flex-direction: column;
+  }
+
+  .followers,
+  .following,
+  .repos {
+    width: 100%;
+    height: 55px;
+  }
 }

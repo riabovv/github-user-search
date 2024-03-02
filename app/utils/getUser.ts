@@ -1,6 +1,8 @@
 import { octokit } from "./octokit";
 
 const getUser = async (userNameToFind: string) => {
+  let result;
+
   try {
     const res = await octokit.request("GET /users/{username}", {
       username: userNameToFind,
@@ -9,10 +11,12 @@ const getUser = async (userNameToFind: string) => {
       },
     });
 
-    console.log(res.data);
+    result = res.data;
   } catch (err) {
     console.log(err);
   }
+
+  return result;
 };
 
 export default getUser;
