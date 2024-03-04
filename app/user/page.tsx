@@ -8,17 +8,21 @@ import getUser from "../utils/getUser";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faArrowUpRightFromSquare,
-  faEnvelope,
   faGlobe,
   faLocationDot,
 } from "@fortawesome/free-solid-svg-icons";
+import getRepos from "../utils/getRepos";
+import Repo from "../types/repo";
+import { formatDateDifference } from "../utils/date";
 
 const User = () => {
   const [userToShow, setUserToShow] = useState<User>();
+  const [reposToShow, setReposToShow] = useState<Repo[]>([]);
 
   useLayoutEffect(() => {
     const fetchUser = async () => {
       const user = await getUser("riabovv");
+      const repos = await getRepos("riabovv");
 
       if (user) {
         setUserToShow({
@@ -35,9 +39,21 @@ const User = () => {
           profileDateOfUpdate: user.updated_at,
         });
       }
+
+      if (repos) {
+        setReposToShow(
+          repos.map((repo) => ({
+            name: repo.name,
+            updated: repo.updated_at,
+            language: repo.language,
+            url: repo.html_url,
+          }))
+        );
+      }
     };
 
     fetchUser();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
@@ -131,65 +147,34 @@ const User = () => {
                 </div>
               </div>
             </div>
-            <div className={styles.repositories}>
-              <div className={styles.repositoriesTitleWrapper}>
-                <span>Public repositories</span>
-              </div>
-              <div className={styles.repositoryCardWrapper}>
-                <div className={styles.repositoryCard}>
-                  <div className={styles.repositoryCardTitle}>
-                    <div className={styles.repositoryName}>
-                      <span>react-test-task</span>
-                    </div>
-                    <div className={styles.dateOfUpdate}>
-                      <span>updated 2 months ago</span>
-                    </div>
-                  </div>
-                  <div className={styles.repositoryCardDevLang}>
-                    <span>HTML</span>
-                  </div>
+            {reposToShow && (
+              <div className={styles.repositories}>
+                <div className={styles.repositoriesTitleWrapper}>
+                  <span>Public repositories</span>
                 </div>
-                <div className={styles.repositoryCard}>
-                  <div className={styles.repositoryCardTitle}>
-                    <div className={styles.repositoryName}>
-                      <span>react-test-task</span>
-                    </div>
-                    <div className={styles.dateOfUpdate}>
-                      <span>updated 2 months ago</span>
-                    </div>
-                  </div>
-                  <div className={styles.repositoryCardDevLang}>
-                    <span>HTML</span>
-                  </div>
-                </div>
-                <div className={styles.repositoryCard}>
-                  <div className={styles.repositoryCardTitle}>
-                    <div className={styles.repositoryName}>
-                      <span>react-test-task</span>
-                    </div>
-                    <div className={styles.dateOfUpdate}>
-                      <span>updated 2 months ago</span>
-                    </div>
-                  </div>
-                  <div className={styles.repositoryCardDevLang}>
-                    <span>HTML</span>
-                  </div>
-                </div>
-                <div className={styles.repositoryCard}>
-                  <div className={styles.repositoryCardTitle}>
-                    <div className={styles.repositoryName}>
-                      <span>react-test-task</span>
-                    </div>
-                    <div className={styles.dateOfUpdate}>
-                      <span>updated 2 months ago</span>
-                    </div>
-                  </div>
-                  <div className={styles.repositoryCardDevLang}>
-                    <span>HTML</span>
-                  </div>
+                <div className={styles.repositoryCardWrapper}>
+                  {reposToShow.map((repo) => {
+                    return (
+                      <div className={styles.repositoryCard} key={repo.updated}>
+                        <div className={styles.repositoryCardTitle}>
+                          <div className={styles.repositoryName}>
+                            <a href={repo.url}>{repo.name}</a>
+                          </div>
+                          <div className={styles.dateOfUpdate}>
+                            <span>
+                              {formatDateDifference(repo.updated ?? "")}
+                            </span>
+                          </div>
+                        </div>
+                        <div className={styles.repositoryCardDevLang}>
+                          <span>{repo.language}</span>
+                        </div>
+                      </div>
+                    );
+                  })}
                 </div>
               </div>
-            </div>
+            )}
           </div>
         </div>
       )}
