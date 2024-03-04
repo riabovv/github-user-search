@@ -153,9 +153,9 @@ const User = () => {
                   <span>Public repositories</span>
                 </div>
                 <div className={styles.repositoryCardWrapper}>
-                  {reposToShow.map((repo) => {
+                  {reposToShow.map((repo, index) => {
                     return (
-                      <div className={styles.repositoryCard} key={repo.updated}>
+                      <div className={styles.repositoryCard} key={index + 1}>
                         <div className={styles.repositoryCardTitle}>
                           <div className={styles.repositoryName}>
                             <a href={repo.url}>{repo.name}</a>

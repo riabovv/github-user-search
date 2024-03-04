@@ -101,6 +101,10 @@
 }
 
 .repositoryCard {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 25px;
   width: 400px;
   background-color: #144c68;
   padding: 16px;
@@ -110,8 +114,12 @@
 .repositoryCardTitle {
   display: flex;
   justify-content: space-between;
-  align-items: center;
-  margin: 0 0 25px 0;
+  align-items: baseline;
+}
+
+.dateOfUpdate {
+  width: 60%;
+  text-align: right;
 }
 
 .repositoryCardDevLang,
