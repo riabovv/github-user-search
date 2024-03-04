@@ -1,8 +1,9 @@
 "use client";
 
 import { useLayoutEffect, useState } from "react";
-import styles from "./page.module.css";
+import { redirect, usePathname } from "next/navigation";
 import Image from "next/image";
+import styles from "./page.module.css";
 import Header from "../components/layout/Header/Header";
 import getUser from "../utils/getUser";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -18,11 +19,12 @@ import { formatDateDifference } from "../utils/date";
 const User = () => {
   const [userToShow, setUserToShow] = useState<User>();
   const [reposToShow, setReposToShow] = useState<Repo[]>([]);
+  const pathname = usePathname().split("/")[1];
 
   useLayoutEffect(() => {
     const fetchUser = async () => {
-      const user = await getUser("riabovv");
-      const repos = await getRepos("riabovv");
+      const user = await getUser(pathname);
+      const repos = await getRepos(pathname);
 
       if (user) {
         setUserToShow({

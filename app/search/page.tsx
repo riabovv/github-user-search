@@ -8,6 +8,7 @@ import searchUsers from "../utils/searchUsers";
 import UserCard from "../types/userCard";
 import LoadingSkeleton from "../components/LoadingSkeleton/LoadingSkeleton";
 import styles from "./page.module.css";
+import Link from "next/link";
 
 const Search = () => {
   const searchParams = useSearchParams();
@@ -86,7 +87,9 @@ const Search = () => {
                   />
                 </div>
                 <div className={styles.cardTitle}>
-                  <a href={userCard.url}>{userCard.nickname}</a>
+                  <Link href={`/${userCard.nickname}`}>
+                    {userCard.nickname}
+                  </Link>
                 </div>
               </div>
             );
