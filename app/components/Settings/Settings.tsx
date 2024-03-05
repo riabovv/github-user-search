@@ -4,7 +4,7 @@ import styles from "./settings.module.css";
 
 const Settings = () => (
   <div className={styles.wrapper}>
-    <FontAwesomeIcon icon={faBars} className={styles.icon} />
+    <FontAwesomeIcon icon={faBars} className={styles.icon} title="Settings" />
   </div>
 );
 
