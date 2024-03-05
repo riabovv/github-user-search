@@ -1,12 +1,38 @@
-.wrapper {
+.skeletonWrapper {
   max-width: 1440px;
   width: 100%;
   margin: 0 auto;
+}
+
+.wrapper {
   display: grid;
   grid-template-columns: repeat(auto-fill, 280px);
   justify-content: center;
   grid-gap: 80px;
   padding: 5px 0 80px 0;
+}
+
+.text {
+  position: relative;
+  width: 100%;
+  max-width: 213px;
+  height: 24px;
+  margin: 20px 0px 10px 0px;
+  background-color: #154862;
+  border-radius: 5px;
+  overflow: hidden;
+}
+
+.text:after {
+  content: "";
+  position: absolute;
+  width: 1px;
+  height: 100%;
+  background-color: #3e6d85;
+  box-shadow: 0px 0px 216px 102px #3e6d85;
+  filter: blur(4px);
+  transform: translateX(-50%);
+  animation: infinite movement 2s ease-in-out;
 }
 
 .cardWrapper {
@@ -68,4 +94,10 @@
   height: 30px;
   background-color: #113c52;
   border-radius: 10px;
+}
+
+@media screen and (max-width: 576px) {
+  .text {
+    margin: 20px auto 10px auto;
+  }
 }

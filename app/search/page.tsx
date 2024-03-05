@@ -55,47 +55,51 @@ const Search = () => {
   return (
     <>
       <Header shouldLogoRedirect />
-      <div className={styles.foundUsersWrapper}>
-        {amountOfUsersFound !== 0 && (
-          <span className={styles.foundUsersTitle}>
-            {amountOfUsersFound > 1 ? (
-              <>
-                <span className={styles.amount}>{amountOfUsersFound}</span>{" "}
-                users were found
-              </>
-            ) : (
-              <>
-                <span className={styles.amount}>{amountOfUsersFound}</span> user
-                was found
-              </>
-            )}
-          </span>
-        )}
-      </div>
       {userCards.length > 0 && (
-        <div className={styles.wrapper}>
-          {userCards.map((userCard) => {
-            return (
-              <div className={styles.cardWrapper} key={userCard.nickname}>
-                <div className={styles.cardImage}>
-                  <Image
-                    src={userCard.avatarUrl}
-                    alt={userCard.nickname}
-                    width={240}
-                    height={250}
-                    priority={true}
-                  />
+        <>
+          <div className={styles.foundUsersWrapper}>
+            {amountOfUsersFound !== 0 && (
+              <span className={styles.foundUsersTitle}>
+                {amountOfUsersFound > 1 ? (
+                  <>
+                    <span className={styles.amount}>{amountOfUsersFound}</span>{" "}
+                    users were found
+                  </>
+                ) : (
+                  <>
+                    <span className={styles.amount}>{amountOfUsersFound}</span>{" "}
+                    user was found
+                  </>
+                )}
+              </span>
+            )}
+          </div>
+          <div className={styles.wrapper}>
+            {userCards.map((userCard) => {
+              return (
+                <div className={styles.cardWrapper} key={userCard.nickname}>
+                  <div className={styles.cardImage}>
+                    <Image
+                      src={userCard.avatarUrl}
+                      alt={userCard.nickname}
+                      width={240}
+                      height={250}
+                      priority={true}
+                    />
+                  </div>
+                  <div className={styles.cardTitle}>
+                    <Link href={`/${userCard.nickname}`}>
+                      {userCard.nickname}
+                    </Link>
+                  </div>
                 </div>
-                <div className={styles.cardTitle}>
-                  <Link href={`/${userCard.nickname}`}>
-                    {userCard.nickname}
-                  </Link>
-                </div>
-              </div>
-            );
-          })}
-        </div>
+              );
+            })}
+          </div>
+        </>
       )}
+
+      {/* <LoadingSkeleton /> */}
 
       {userCards.length === 0 && <LoadingSkeleton />}
     </>
