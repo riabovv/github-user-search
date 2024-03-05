@@ -99,9 +99,7 @@ const Search = () => {
         </>
       )}
 
-      {/* <LoadingSkeleton /> */}
-
-      {userCards.length === 0 && <LoadingSkeleton />}
+      {userCards.length === 0 && amountOfUsersFound < 1 && <LoadingSkeleton />}
     </>
   );
 };

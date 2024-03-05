@@ -3,8 +3,8 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import styles from "./settings.module.css";
 
 const Settings = () => (
-  <div className={styles.wrapper}>
-    <FontAwesomeIcon icon={faBars} className={styles.icon} title="Settings" />
+  <div className={styles.wrapper} title="Settings">
+    <FontAwesomeIcon icon={faBars} className={styles.icon} />
   </div>
 );
 
