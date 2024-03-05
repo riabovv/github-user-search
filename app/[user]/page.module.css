@@ -18,11 +18,16 @@
   font-weight: 700;
   text-align: center;
   color: var(--primary-color);
+  width: 100%;
+  max-width: 300px;
 }
 
 .bio {
   margin: 10px 0 15px 0;
   font-size: 20px;
+  text-align: justify;
+  width: 100%;
+  max-width: 300px;
 }
 
 .location {
@@ -116,6 +121,7 @@
   display: flex;
   justify-content: space-between;
   align-items: baseline;
+  gap: 5px;
 }
 
 .dateOfUpdate {
@@ -160,6 +166,11 @@
 
   .bio {
     margin: 10px 0 15px 0;
+  }
+
+  .name,
+  .bio {
+    max-width: unset;
   }
 }
 
