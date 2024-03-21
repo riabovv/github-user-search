@@ -15,6 +15,7 @@ import {
 import getRepos from "../utils/getRepos";
 import Repo from "../types/repo";
 import { formatDateDifference } from "../utils/date";
+import BackToTop from "../components/common/BackToTop/BackToTop";
 
 const User = () => {
   const [userToShow, setUserToShow] = useState<User>();
@@ -180,6 +181,8 @@ const User = () => {
           </div>
         </div>
       )}
+
+      <BackToTop />
     </>
   );
 };

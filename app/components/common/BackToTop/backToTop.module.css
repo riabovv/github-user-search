@@ -1,0 +1,22 @@
+.backToTop {
+  --size: 50px;
+
+  position: fixed;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: var(--size);
+  height: var(--size);
+  border-radius: 50%;
+  right: 45px;
+  bottom: 50px;
+  background-color: var(--primary-color);
+  color: var(--dark);
+  font-size: 25px;
+  transition: 0.3s ease-out;
+  box-shadow: rgb(44, 44, 44) 0px 0px 24px;
+}
+
+.backToTop:hover {
+  background-color: var(--light);
+}
