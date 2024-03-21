@@ -157,6 +157,13 @@
   color: var(--light-dark);
 }
 
+.magnifyingGlass {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 @media screen and (max-width: 992px) {
   .repositoryCard {
     width: 100%;

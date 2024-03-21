@@ -1,7 +1,7 @@
 "use client";
 
 import { useLayoutEffect, useState } from "react";
-import { redirect, usePathname, useRouter } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import Image from "next/image";
 import styles from "./page.module.css";
 import Header from "../components/layout/Header/Header";
@@ -17,6 +17,7 @@ import getRepos from "../utils/getRepos";
 import Repo from "../types/repo";
 import { formatDateDifference } from "../utils/date";
 import BackToTop from "../components/common/BackToTop/BackToTop";
+import { MagnifyingGlass } from "react-loader-spinner";
 
 const User = () => {
   const [userToShow, setUserToShow] = useState<User>();
@@ -165,7 +166,7 @@ const User = () => {
                 </div>
               </div>
             </div>
-            {reposToShow && (
+            {reposToShow.length > 0 && (
               <div className={styles.repositories}>
                 <div className={styles.repositoriesTitleWrapper}>
                   <span>Public repositories</span>
@@ -193,6 +194,23 @@ const User = () => {
                 </div>
               </div>
             )}
+          </div>
+        </div>
+      )}
+
+      {!userToShow && (
+        <div className={styles.wrapper}>
+          <div className={styles.magnifyingGlass}>
+            <MagnifyingGlass
+              visible={true}
+              height="80"
+              width="80"
+              ariaLabel="magnifying-glass-loading"
+              wrapperStyle={{}}
+              wrapperClass="magnifying-glass-wrapper"
+              glassColor="#c0efff"
+              color="#fb8500"
+            />
           </div>
         </div>
       )}
