@@ -1,13 +1,14 @@
 "use client";
 
 import { useLayoutEffect, useState } from "react";
-import { redirect, usePathname } from "next/navigation";
+import { redirect, usePathname, useRouter } from "next/navigation";
 import Image from "next/image";
 import styles from "./page.module.css";
 import Header from "../components/layout/Header/Header";
 import getUser from "../utils/getUser";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
+  faArrowLeft,
   faArrowUpRightFromSquare,
   faGlobe,
   faLocationDot,
@@ -20,9 +21,13 @@ import BackToTop from "../components/common/BackToTop/BackToTop";
 const User = () => {
   const [userToShow, setUserToShow] = useState<User>();
   const [reposToShow, setReposToShow] = useState<Repo[]>([]);
+  const [searchValue, setSearchValue] = useState<string | null>();
   const pathname = usePathname().split("/")[1];
+  const router = useRouter();
 
   useLayoutEffect(() => {
+    setSearchValue(sessionStorage.getItem("search-value"));
+
     const fetchUser = async () => {
       const user = await getUser(pathname);
       const repos = await getRepos(pathname);
@@ -62,6 +67,16 @@ const User = () => {
   return (
     <>
       <Header shouldLogoRedirect />
+
+      {searchValue && (
+        <div className={styles.backToSearchWrapper}>
+          <button onClick={() => router.back()}>
+            <FontAwesomeIcon icon={faArrowLeft} />
+            <span>Back to search</span>
+          </button>
+        </div>
+      )}
+
       {userToShow && (
         <div className={styles.wrapper}>
           <div className={styles.info}>

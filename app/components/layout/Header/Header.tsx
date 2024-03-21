@@ -11,7 +11,7 @@ const Header: FunctionComponent<HeaderProps> = ({ shouldLogoRedirect }) => (
   <header>
     <div className={styles.wrapper}>
       <Logo shouldRedirect={shouldLogoRedirect} />
-      <Settings />
+      {/* <Settings /> */}
     </div>
   </header>
 );

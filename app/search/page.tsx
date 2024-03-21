@@ -9,6 +9,7 @@ import UserCard from "../types/userCard";
 import LoadingSkeleton from "../components/LoadingSkeleton/LoadingSkeleton";
 import styles from "./page.module.css";
 import Link from "next/link";
+import BackToTop from "../components/common/BackToTop/BackToTop";
 
 const Search = () => {
   const searchParams = useSearchParams();
@@ -100,6 +101,8 @@ const Search = () => {
       )}
 
       {userCards.length === 0 && amountOfUsersFound < 1 && <LoadingSkeleton />}
+
+      <BackToTop />
     </>
   );
 };
