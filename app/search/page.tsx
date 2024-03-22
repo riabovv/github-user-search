@@ -10,6 +10,7 @@ import LoadingSkeleton from "../components/LoadingSkeleton/LoadingSkeleton";
 import styles from "./page.module.css";
 import Link from "next/link";
 import BackToTop from "../components/common/BackToTop/BackToTop";
+import Pagination from "../components/common/Pagination/Pagination";
 
 const Search = () => {
   const searchParams = useSearchParams();
@@ -97,6 +98,8 @@ const Search = () => {
               );
             })}
           </div>
+
+          <Pagination />
         </>
       )}
 
