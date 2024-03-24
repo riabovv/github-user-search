@@ -1,0 +1,60 @@
+.foundUsersWrapper {
+  max-width: 1440px;
+  margin: 0 auto;
+  width: 100%;
+  padding: 20px 0 10px 0;
+}
+
+.foundUsersTitle {
+  font-size: 18px;
+}
+
+.amount {
+  color: var(--primary-color);
+}
+
+.wrapper {
+  max-width: 1440px;
+  width: 100%;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, 280px);
+  justify-content: center;
+  grid-gap: 80px;
+  padding: 5px 0 40px 0;
+}
+
+.cardWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+  width: 280px;
+  height: 350px;
+  padding: 20px;
+  box-shadow: rgba(44, 44, 44, 0.2) 0px 8px 24px;
+  background-color: #154862;
+  border-radius: 10px;
+  transition: 0.3s ease;
+  border: 3px solid transparent;
+}
+
+.cardImage img {
+  border-radius: 10px;
+}
+
+.cardTitle {
+  font-size: 25px;
+  text-align: center;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .cardWrapper:hover {
+    border: 3px solid var(--primary-color);
+  }
+}
+
+@media screen and (max-width: 576px) {
+  .foundUsersWrapper {
+    text-align: center;
+  }
+}

@@ -1,0 +1,228 @@
+.wrapper {
+  max-width: 1440px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 20px 0px 80px 0px;
+  display: flex;
+  gap: 50px;
+}
+
+.backToSearchWrapper {
+  max-width: 1440px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.backToSearchWrapper button {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: none;
+  color: var(--primary-color);
+  transition: 0.3s ease-out;
+  padding: 8px 15px;
+  font-size: 16px;
+  border-radius: 4px;
+}
+
+.backToSearchWrapper button:hover {
+  background-color: #144c68;
+}
+
+.avatarImage {
+  border-radius: 10px;
+  box-shadow: rgba(0, 0, 0, 0.2) 0px 7px 29px 0px;
+}
+
+.name {
+  margin: 20px 0 0 0;
+  font-size: 30px;
+  font-weight: 700;
+  text-align: center;
+  color: var(--primary-color);
+  width: 100%;
+  max-width: 300px;
+}
+
+.bio {
+  margin: 10px 0 15px 0;
+  font-size: 20px;
+  text-align: justify;
+  width: 100%;
+  max-width: 300px;
+}
+
+.location {
+  margin: 0 0 5px 0;
+}
+
+.blog a,
+.location {
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  color: var(--light-dark);
+}
+
+.bioIcon {
+  --size: 14px;
+
+  width: var(--size);
+  height: var(--size);
+}
+
+.githubInfo {
+  width: 100%;
+}
+
+.githubProfile {
+  margin: 0 0 20px 0;
+}
+
+.ghProfileLink {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.externalLinkIcon {
+  --size: 15px;
+
+  width: var(--size);
+  height: var(--size);
+}
+
+.githubActivity {
+  display: flex;
+  gap: 30px;
+  margin: 0 0 30px 0;
+}
+
+.githubActivityTitle {
+  display: inline-block;
+  margin: 0 0 10px 0;
+}
+
+.followers,
+.following,
+.repos {
+  width: 120px;
+  height: 60px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #144c68;
+  border-radius: 10px;
+  box-shadow: rgba(0, 0, 0, 0.2) 0px 4px 10px 0px;
+  font-size: 25px;
+}
+
+.repositoriesTitleWrapper {
+  margin: 0 0 10px 0;
+}
+
+.repositoryCardWrapper {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.repositoryCard {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 25px;
+  width: 400px;
+  background-color: #144c68;
+  padding: 16px;
+  border-radius: 5px;
+}
+
+.repositoryCardTitle {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 5px;
+}
+
+.dateOfUpdate {
+  width: 60%;
+  text-align: right;
+}
+
+.repositoryCardDevLang,
+.dateOfUpdate {
+  font-size: 12px;
+  color: var(--light-dark);
+}
+
+.magnifyingGlass {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@media screen and (max-width: 992px) {
+  .repositoryCard {
+    width: 100%;
+  }
+
+  .followers,
+  .following,
+  .repos {
+    width: 110px;
+    height: 55px;
+  }
+
+  .githubActivity {
+    gap: 20px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .wrapper {
+    flex-direction: column;
+    gap: 25px;
+  }
+
+  .avatar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .bio {
+    margin: 10px 0 15px 0;
+  }
+
+  .name,
+  .bio {
+    max-width: unset;
+  }
+}
+
+@media screen and (max-width: 576px) {
+  .avatar img {
+    width: 100%;
+    height: unset;
+  }
+
+  .githubActivity {
+    justify-content: center;
+  }
+}
+
+@media screen and (max-width: 405px) {
+  .githubActivity {
+    flex-direction: column;
+  }
+
+  .followers,
+  .following,
+  .repos {
+    width: 100%;
+    height: 55px;
+  }
+}

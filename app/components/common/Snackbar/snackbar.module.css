@@ -1,0 +1,95 @@
+.wrapper {
+  --translateYPos: -20px;
+
+  position: fixed;
+  bottom: 0px;
+  right: 45px;
+  width: 300px;
+  height: 80px;
+  border-radius: 10px;
+  text-align: center;
+  transform: translateY(var(--translateYPos));
+  background-color: #196489;
+  animation: 1s appearing ease-out;
+  padding: 10px 15px;
+}
+
+.contentWrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  height: 100%;
+}
+
+.line {
+  width: 5px;
+  height: 100%;
+  background-color: var(--light);
+  border-radius: 5px;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  align-self: flex-start;
+  gap: 10px;
+  height: 100%;
+}
+
+.contentHeader {
+  align-self: flex-start;
+  font-weight: 700;
+}
+
+.contentText {
+  align-self: flex-start;
+  text-align: justify;
+}
+
+.action {
+  align-self: flex-start;
+}
+
+.closeButton {
+  padding: 0px;
+  background-color: transparent;
+  color: var(--light);
+}
+
+.iconXmark {
+  --size: 25px;
+
+  width: var(--size);
+  height: var(--size);
+}
+
+@keyframes appearing {
+  0% {
+    transform: translateY(200px);
+  }
+
+  60% {
+    transform: translateY(-30px);
+  }
+
+  70% {
+    transform: translateY(-15px);
+  }
+
+  80% {
+    transform: translateY(-25px);
+  }
+
+  100% {
+    transform: translateY(var(--translateYPos));
+  }
+}
+
+@media screen and (max-width: 576px) {
+  .wrapper {
+    right: unset;
+    height: 70px;
+  }
+}

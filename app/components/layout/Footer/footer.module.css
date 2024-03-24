@@ -1,0 +1,10 @@
+.wrapper {
+  padding: 5px 0px;
+  max-width: 1440px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.title {
+  font-size: 12px;
+}

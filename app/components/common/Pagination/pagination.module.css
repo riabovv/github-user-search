@@ -1,0 +1,59 @@
+.wrapper {
+  max-width: 1440px;
+  width: 100%;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  padding: 0px 0px 40px 0px;
+}
+
+.paginationWrapper {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.arrowLeft {
+  border-right: 1px solid var(--primary-color);
+}
+
+.arrowRight {
+  border-left: 1px solid var(--primary-color);
+}
+
+.arrowLeft button,
+.arrowRight button {
+  background: none;
+  color: var(--light);
+  font-size: 20px;
+  padding: 0px 10px;
+}
+
+.arrowLeft button:disabled,
+.arrowRight button:disabled {
+  color: #2f4956;
+}
+
+.amountOfPages {
+  background: none;
+  padding: 0;
+  color: var(--light);
+}
+
+.amountOfPagesText {
+  display: flex;
+  gap: 5px;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.amountOfPagesInput {
+  position: relative;
+  width: 30px;
+  padding: 0px;
+  background: none;
+  border: none;
+  color: var(--light);
+  border-bottom: 1px solid var(--light);
+  border-radius: 0px;
+}
