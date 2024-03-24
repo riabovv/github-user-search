@@ -25,6 +25,8 @@ const User = () => {
   const [searchValue, setSearchValue] = useState<string | null>();
   const pathname = usePathname().split("/")[1];
   const router = useRouter();
+  const isLink =
+    userToShow?.blog?.includes("https") || userToShow?.blog?.includes("http");
 
   useLayoutEffect(() => {
     setSearchValue(sessionStorage.getItem("search-value"));
@@ -73,7 +75,7 @@ const User = () => {
         <div className={styles.backToSearchWrapper}>
           <button onClick={() => router.back()}>
             <FontAwesomeIcon icon={faArrowLeft} />
-            <span>Back to search</span>
+            <span>Back to results</span>
           </button>
         </div>
       )}
@@ -114,7 +116,9 @@ const User = () => {
               {userToShow.blog && (
                 <div className={styles.blog}>
                   <a
-                    href={userToShow.blog}
+                    href={
+                      isLink ? userToShow.blog : `https://${userToShow.blog}`
+                    }
                     target="_blank"
                     rel="noopener noreferrer"
                   >

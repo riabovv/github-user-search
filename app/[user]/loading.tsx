@@ -24,7 +24,7 @@ const Loading = () => {
         <div className={styles.backToSearchWrapper}>
           <button onClick={() => router.back()}>
             <FontAwesomeIcon icon={faArrowLeft} />
-            <span>Back to search</span>
+            <span>Back to results</span>
           </button>
         </div>
       )}
