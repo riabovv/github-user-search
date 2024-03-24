@@ -1,5 +1,5 @@
 import Logo from "@/app/components/Logo/Logo";
-import Settings from "@/app/components/Settings/Settings";
+// import Settings from "@/app/components/Settings/Settings";
 import styles from "./header.module.css";
 import { FunctionComponent } from "react";
 
