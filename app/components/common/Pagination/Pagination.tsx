@@ -49,7 +49,7 @@ const Pagination: FunctionComponent<PaginationProps> = ({
     <div className={styles.wrapper}>
       <div className={styles.paginationWrapper}>
         <div className={styles.arrowLeft}>
-          <button onClick={handlePageIncrement}>
+          <button onClick={handlePageIncrement} disabled={page === 1}>
             <FontAwesomeIcon icon={faArrowLeft} />
           </button>
         </div>
@@ -75,7 +75,7 @@ const Pagination: FunctionComponent<PaginationProps> = ({
           </span>
         </div>
         <div className={styles.arrowRight}>
-          <button onClick={handlePageDecrement}>
+          <button onClick={handlePageDecrement} disabled={page === totalPages}>
             <FontAwesomeIcon icon={faArrowRight} />
           </button>
         </div>

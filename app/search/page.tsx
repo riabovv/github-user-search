@@ -48,7 +48,9 @@ const Search = () => {
   };
 
   useEffect(() => {
-    findUsers(page);
+    if (page > 1) {
+      findUsers(page);
+    }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [page]);
 

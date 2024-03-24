@@ -20,7 +20,7 @@ const searchUsers = async (searchParam: string, page: number) => {
       perPage: PER_PAGE,
     };
   } catch (err) {
-    console.log(err);
+    throw Error((err as Error).message);
   }
 
   return result;
