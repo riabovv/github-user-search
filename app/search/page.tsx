@@ -1,6 +1,6 @@
 "use client";
 
-import { useLayoutEffect, useState } from "react";
+import { useEffect, useLayoutEffect, useState } from "react";
 import { redirect, useSearchParams } from "next/navigation";
 import Image from "next/image";
 import Header from "../components/layout/Header/Header";
@@ -17,39 +17,47 @@ const Search = () => {
   const hasQueryParam = !!searchParams.get("q");
   const queryParam = searchParams.get("q") ?? "";
   const [amountOfUsersFound, setAmountOfUsersFound] = useState(0);
-
   const [userCards, setUserCards] = useState<UserCard[]>([]);
+  const [perPage, setPerPage] = useState(0);
+  const [page, setPage] = useState(1);
+  const totalPages = Math.ceil(amountOfUsersFound / perPage);
+
+  const findUsers = async (page: number) => {
+    const inputValue = sessionStorage.getItem("search-value");
+
+    if (inputValue || queryParam) {
+      const foundUsers = await searchUsers(inputValue || queryParam, page);
+
+      let usersToSave: UserCard[] = [];
+
+      if (foundUsers) {
+        foundUsers.items.forEach((user) => {
+          usersToSave.push({
+            nickname: user.login,
+            avatarUrl: user.avatar_url,
+            url: user.html_url,
+          });
+        });
+
+        setAmountOfUsersFound(foundUsers.totalAmount);
+        setPerPage(foundUsers.perPage);
+      }
+
+      setUserCards(usersToSave);
+    }
+  };
+
+  useEffect(() => {
+    findUsers(page);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [page]);
 
   useLayoutEffect(() => {
     if (!hasQueryParam) {
       redirect("/");
     }
 
-    const findUsers = async () => {
-      const inputValue = sessionStorage.getItem("search-value");
-
-      if (inputValue || queryParam) {
-        const foundUsers = await searchUsers(inputValue || queryParam);
-
-        let usersToSave: UserCard[] = [];
-
-        if (foundUsers) {
-          foundUsers.items.forEach((user) => {
-            usersToSave.push({
-              nickname: user.login,
-              avatarUrl: user.avatar_url,
-              url: user.html_url,
-            });
-          });
-
-          setAmountOfUsersFound(foundUsers.totalAmount);
-        }
-
-        setUserCards(usersToSave);
-      }
-    };
-
-    findUsers();
+    findUsers(page);
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
@@ -99,7 +107,9 @@ const Search = () => {
             })}
           </div>
 
-          <Pagination />
+          {totalPages !== 1 && (
+            <Pagination page={page} totalPages={totalPages} setPage={setPage} />
+          )}
         </>
       )}
 

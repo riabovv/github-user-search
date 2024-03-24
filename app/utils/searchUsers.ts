@@ -1,11 +1,14 @@
 import { octokit } from "./octokit";
 
-const searchUsers = async (searchParam: string) => {
+const searchUsers = async (searchParam: string, page: number) => {
   let result;
+  const PER_PAGE = 42;
 
   try {
     const res = await octokit.request("GET /search/users", {
-      q: searchParam, // should be set from the input
+      q: searchParam, // should be set from the input,
+      page,
+      per_page: PER_PAGE,
       headers: {
         "X-GitHub-Api-Version": "2022-11-28",
       },
@@ -14,6 +17,7 @@ const searchUsers = async (searchParam: string) => {
     result = {
       items: res.data.items,
       totalAmount: res.data.total_count,
+      perPage: PER_PAGE,
     };
   } catch (err) {
     console.log(err);
